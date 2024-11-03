@@ -2,6 +2,7 @@
 
 use Livewire\Volt\Component;
 use App\Models\Group;
+use Masmerise\Toaster\Toaster;
 
 new class extends Component {
     public $name = '';
@@ -20,6 +21,8 @@ new class extends Component {
         ]);
 
         $this->reset();
+
+        Toaster::success('Group created!');
     }
 }; ?>
 

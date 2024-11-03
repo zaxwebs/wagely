@@ -2,6 +2,7 @@
 
 use Livewire\Volt\Component;
 use App\Models\Employee;
+use Masmerise\Toaster\Toaster;
 
 new class extends Component {
     //
@@ -23,6 +24,8 @@ new class extends Component {
         ]);
 
         $this->reset();
+
+        Toaster::success('Employee created!');
     }
 }; ?>
 
