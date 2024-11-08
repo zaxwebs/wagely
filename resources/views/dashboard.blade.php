@@ -20,6 +20,7 @@
             </div>
 
             <livewire:employees.index />
+            <livewire:groups.index />
         </div>
     </div>
 </x-app-layout>
