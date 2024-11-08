@@ -18,6 +18,8 @@
                     <livewire:employees.create-form />
                 </div>
             </div>
+
+            <livewire:employees.index />
         </div>
     </div>
 </x-app-layout>
