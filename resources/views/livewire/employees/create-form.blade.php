@@ -2,6 +2,7 @@
 
 use Livewire\Volt\Component;
 use App\Models\Employee;
+use App\Models\Group;
 use Masmerise\Toaster\Toaster;
 
 new class extends Component {
@@ -9,6 +10,15 @@ new class extends Component {
     public $name = '';
 
     public $phone = '';
+
+    public $group;
+
+    public $groups = [];
+
+    public function mount()
+    {
+        $this->groups = Group::all();
+    }
 
     public function submit()
     {
@@ -23,7 +33,7 @@ new class extends Component {
             'group_id' => 1,
         ]);
 
-        $this->reset();
+        $this->resetExcept('groups');
 
         Toaster::success('Employee created!');
     }
@@ -48,6 +58,18 @@ new class extends Component {
             <x-text-input wire:model="phone" id="phone" name="phone" class="block w-full mt-1"
                 placeholder="Enter phone" required />
             <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="group" :value="__('Group')" />
+            <select wire:model="group" id="group" name="group"
+                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600">
+                @foreach ($groups as $group)
+                    <option value="{{ $group->id }}">{{ $group->name }}</option>
+                @endforeach
+            </select>
+
+            <x-input-error class="mt-2" :messages="$errors->get('groups')" />
         </div>
 
         <div class="flex items-center gap-4 mt-4">
