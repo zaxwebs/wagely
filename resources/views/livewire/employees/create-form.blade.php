@@ -30,7 +30,7 @@ new class extends Component {
         Employee::create([
             'name' => $this->name,
             'phone' => $this->phone,
-            'group_id' => 1,
+            'group_id' => $this->group,
         ]);
 
         $this->resetExcept('groups');
